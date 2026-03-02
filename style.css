@@ -13,6 +13,14 @@ body {
   background: #121212;
   color: #ffffff;
 }
+p {
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+small {
+  color: #cccccc;
+}
 
 /* NAVBAR */
 nav {
