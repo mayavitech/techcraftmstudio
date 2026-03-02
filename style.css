@@ -8,9 +8,10 @@
 
 /* BODY */
 body {
-  background-color: #f4f6f8;
-  color: #222;
-  line-height: 1.6;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #121212;
+  color: #ffffff;
 }
 
 /* NAVBAR */
