@@ -188,3 +188,18 @@ button:hover,
   height: 50px;
   border: none;
 }
+/* FORCE TEXT VISIBILITY ON DARK BACKGROUND */
+body,
+body p,
+body span,
+body li,
+body small,
+body div {
+  color: #eaeaea !important;
+}
+
+.card p,
+.content p,
+section p {
+  color: #eaeaea !important;
+}
