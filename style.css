@@ -189,17 +189,23 @@ button:hover,
   border: none;
 }
 /* FORCE TEXT VISIBILITY ON DARK BACKGROUND */
+/* Body text */
 body,
 body p,
-body span,
-body li,
-body small,
-body div {
-  color: #eaeaea !important;
+body li {
+  color: #eaeaea;
 }
 
-.card p,
-.content p,
-section p {
-  color: #eaeaea !important;
+/* Headings */
+h1, h2, h3 {
+  color: #ffffff;
+}
+
+/* Links */
+a {
+  color: #00bcd4;
+}
+
+a:hover {
+  color: #26c6da;
 }
