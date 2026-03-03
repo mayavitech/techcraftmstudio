@@ -188,24 +188,47 @@ button:hover,
   height: 50px;
   border: none;
 }
-/* FORCE TEXT VISIBILITY ON DARK BACKGROUND */
-/* Body text */
-body,
-body p,
-body li {
+/* ===== CLEAN TEXT SYSTEM ===== */
+
+body {
+  background: #121212;
   color: #eaeaea;
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
 
-/* Headings */
 h1, h2, h3 {
   color: #ffffff;
 }
 
-/* Links */
+p, li {
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+/* ===== TECH BLUE ACCENT ===== */
+
 a {
   color: #00bcd4;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 a:hover {
   color: #26c6da;
+}
+
+.download-btn,
+button {
+  background: #00bcd4;
+  color: #000;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.download-btn:hover,
+button:hover {
+  background: #26c6da;
 }
