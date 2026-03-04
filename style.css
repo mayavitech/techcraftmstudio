@@ -8,35 +8,110 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #121212;
   color: #eaeaea;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
+
+  /* Page transition */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+
+  /* Space for fixed navbar */
+  padding-top: 80px;
+}
+
+body.page-loaded {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0 !important;
 }
 
 /* ===============================
-   NAVIGATION
+   GLASS NAVIGATION
 ================================ */
 
-nav {
-  background: #111;
-  padding: 18px 20px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  border-bottom: 1px solid #1f1f1f;
+#navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 18px 0;
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-nav a {
-  color: #ccc;
+.nav-inner {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  color: #00bcd4;
+}
+
+.nav-links a {
+  margin-left: 25px;
   text-decoration: none;
+  color: #ffffff;
   font-weight: 500;
+  position: relative;
   transition: 0.3s;
 }
 
-nav a:hover {
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: #00bcd4;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
   color: #00bcd4;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-scrolled {
+  background: rgba(15, 15, 15, 0.9);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+/* ===============================
+   SCROLL PROGRESS BAR
+================================ */
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #00bcd4;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* ===============================
@@ -77,6 +152,59 @@ p {
 
 small {
   color: #bdbdbd;
+}
+
+/* ===============================
+   HERO SECTION
+================================ */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at top, #1f1f1f 0%, #121212 60%);
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #9adfe8;
+}
+
+/* ===============================
+   SECTION DIVIDERS
+================================ */
+
+.section-dark {
+  background: #121212;
+  padding: 80px 0;
+}
+
+.section-light {
+  background: #161616;
+  padding: 80px 0;
+}
+
+/* ===============================
+   SCROLL REVEAL
+================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===============================
@@ -128,7 +256,7 @@ small {
 }
 
 /* ===============================
-   SHOP (IN PROGRESS)
+   SHOP GRID
 ================================ */
 
 .shop-grid {
@@ -215,48 +343,6 @@ button:hover,
 }
 
 /* ===============================
-   MOBILE
-================================ */
-
-@media (max-width: 600px) {
-  nav {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  h1 {
-    font-size: 26px;
-  }
-}
-/* ===============================
-   SCROLL REVEAL ANIMATION
-================================ */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(80px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  will-change: opacity, transform;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* ===============================
-   SECTION DIVIDERS
-================================ */
-
-.section-dark {
-  background: #121212;
-  padding: 80px 0;
-}
-
-.section-light {
-  background: #161616;
-  padding: 80px 0;
-}
-/* ===============================
    PRELOADER
 ================================ */
 
@@ -269,166 +355,32 @@ button:hover,
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  overflow: hidden;
   transition: transform 1s ease, opacity 1s ease;
 }
-
-.loader-content {
-  text-align: center;
-}
-
-.loader-logo {
-  color: white;
-  margin-top: 20px;
-  font-size: 28px;
-  letter-spacing: 2px;
-  animation: fadeInLogo 1.5s ease forwards;
-}
-
-/* Animated Blocks */
-
-.blocks {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.blocks span {
-  width: 20px;
-  height: 20px;
-  background: #00bcd4;
-  animation: blockMove 1.2s infinite alternate;
-}
-
-.blocks span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.blocks span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-.blocks span:nth-child(4) {
-  animation-delay: 0.6s;
-}
-
-@keyframes blockMove {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes fadeInLogo {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Hide animation */
 
 .preloader-hide {
   transform: translateY(-100%);
   opacity: 0;
 }
-/* ===============================
-   PAGE TRANSITION
-================================ */
-
-body {
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-body.page-loaded {
-  opacity: 1;
-}
-
-.fade-out {
-  opacity: 0 !important;
-}
-/* ===============================
-   GLASS NAVIGATION
-================================ */
-
-#navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  padding: 15px 0;
-  background: rgba(15, 15, 15, 0.6);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.nav-inner {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 18px;
-  color: #00bcd4;
-}
-
-.nav-links a {
-  margin-left: 25px;
-  text-decoration: none;
-  color: #ffffff;
-  position: relative;
-  transition: 0.3s;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background: #00bcd4;
-  transition: 0.3s;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-links a:hover {
-  color: #00bcd4;
-}
-
-/* Nav shadow when scrolling */
-.nav-scrolled {
-  background: rgba(15, 15, 15, 0.9);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-}
 
 /* ===============================
-   SCROLL PROGRESS BAR
+   MOBILE
 ================================ */
 
-#scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: #00bcd4;
-  z-index: 2000;
-}
-body {
-  padding-top: 80px;
+@media (max-width: 768px) {
+  .nav-inner {
+    flex-direction: column;
+  }
+
+  .nav-links {
+    margin-top: 10px;
+  }
+
+  .nav-links a {
+    margin-left: 15px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
 }

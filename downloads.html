@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Downloads | TechCraftMStudio</title>
-<meta name="description" content="Download free tech resources, files, templates, and tools from TechCraftMStudio.">
+  <meta name="description" content="Download free tech resources, files, templates, and tools from TechCraftMStudio.">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
   <!-- Google Analytics -->
@@ -16,7 +15,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-HH2VL53WD1');
   </script>
 </head>
@@ -25,69 +23,132 @@
 
   <!-- NAVIGATION -->
   <nav id="navbar">
-  <div class="nav-inner">
-    <div class="logo">TechCraftMStudio</div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="videos.html">Videos</a>
-      <a href="shop.html">Shop</a>
-      <a href="contact.html">Contact</a>
-      <a href="downloads.html">Downloads</a>
+    <div class="nav-inner">
+      <div class="logo">TechCraftMStudio</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="videos.html">Videos</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+        <a href="downloads.html">Downloads</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<div id="scroll-progress"></div>>
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
 
-  <!-- MAIN CONTENT -->
-  <div class="container">
-    <h1>Downloads</h1>
-    <p>Free resources and files from our videos.</p>
+  <!-- HEADER SECTION -->
+  <section class="section-dark">
+    <div class="container reveal">
+      <h1 class="section-title">Downloads</h1>
+      <p style="text-align:center; max-width:600px; margin:20px auto;">
+        Free resources and useful files from our tutorials and videos.
+      </p>
+    </div>
+  </section>
 
-    <div class="download-list">
+  <!-- DOWNLOAD LIST -->
+  <section class="section-light">
+    <div class="container reveal">
 
-      <div class="download-item">
-        <h3>HTML Starter Template</h3>
-        <p>Basic HTML & CSS project structure.</p>
-        <a href="downloads/html-starter.zip" download>Download</a>
-      </div>
+      <div class="download-list">
 
-      <div class="download-item">
-        <h3>YouTube Description Template</h3>
-        <p>Reusable description format for videos.</p>
-        <a href="downloads/youtube-description.pdf" download>Download</a>
-      </div>
+        <div class="download-item">
+          <h3>HTML Starter Template</h3>
+          <p>Basic HTML & CSS project structure.</p>
+          <a href="downloads/html-starter.zip" download class="download-btn">Download</a>
+        </div>
 
-      <div class="download-item">
-        <h3>VS Code Shortcuts</h3>
-        <p>Quick reference cheat sheet.</p>
-        <a href="downloads/vscode-shortcuts.pdf" download>Download</a>
+        <div class="download-item">
+          <h3>YouTube Description Template</h3>
+          <p>Reusable description format for videos.</p>
+          <a href="downloads/youtube-description.pdf" download class="download-btn">Download</a>
+        </div>
+
+        <div class="download-item">
+          <h3>VS Code Shortcuts</h3>
+          <p>Quick reference cheat sheet.</p>
+          <a href="downloads/vscode-shortcuts.pdf" download class="download-btn">Download</a>
+        </div>
+
       </div>
 
     </div>
-  </div>
-<script>
-  // Fade in when page loads
-  window.addEventListener("load", function () {
-    document.body.classList.add("page-loaded");
-  });
+  </section>
 
-  // Fade out when clicking navigation links
-  document.querySelectorAll("nav a").forEach(link => {
-    link.addEventListener("click", function (e) {
-      const target = this.getAttribute("href");
+  <!-- ===============================
+       SCRIPTS
+  ================================== -->
 
-      if (target.includes(".html")) {
-        e.preventDefault();
-        document.body.classList.remove("page-loaded");
-        document.body.classList.add("fade-out");
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
 
-        setTimeout(() => {
-          window.location.href = target;
-        }, 300);
+      /* ===============================
+         PAGE FADE IN
+      ================================ */
+      document.body.classList.add("page-loaded");
+
+      /* ===============================
+         SAFE NAV TRANSITION
+      ================================ */
+      document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", function (e) {
+          const target = this.getAttribute("href");
+
+          if (target && target.includes(".html")) {
+            e.preventDefault();
+            document.body.classList.remove("page-loaded");
+
+            setTimeout(() => {
+              window.location.href = target;
+            }, 250);
+          }
+        });
+      });
+
+      /* ===============================
+         SCROLL PROGRESS + NAV EFFECT
+      ================================ */
+      const navbar = document.getElementById("navbar");
+      const progressBar = document.getElementById("scroll-progress");
+
+      window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 50) {
+          navbar.classList.add("nav-scrolled");
+        } else {
+          navbar.classList.remove("nav-scrolled");
+        }
+
+        let scrollTop = document.documentElement.scrollTop;
+        let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let progress = (scrollTop / scrollHeight) * 100;
+        progressBar.style.width = progress + "%";
+      });
+
+      /* ===============================
+         REVEAL ANIMATION
+      ================================ */
+      function revealElements() {
+        const reveals = document.querySelectorAll('.reveal');
+
+        reveals.forEach((element) => {
+          const windowHeight = window.innerHeight;
+          const elementTop = element.getBoundingClientRect().top;
+          const revealPoint = 100;
+
+          if (elementTop < windowHeight - revealPoint) {
+            element.classList.add("active");
+          }
+        });
       }
+
+      setTimeout(revealElements, 400);
+      window.addEventListener("scroll", revealElements);
+
     });
-  });
-</script>
+  </script>
+
 </body>
 </html>
