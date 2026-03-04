@@ -228,3 +228,30 @@ button:hover,
     font-size: 26px;
   }
 }
+/* ===============================
+   SCROLL REVEAL ANIMATION
+================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ===============================
+   SECTION DIVIDERS
+================================ */
+
+.section-dark {
+  background: #121212;
+  padding: 80px 0;
+}
+
+.section-light {
+  background: #161616;
+  padding: 80px 0;
+}

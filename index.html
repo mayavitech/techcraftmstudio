@@ -45,7 +45,8 @@
   </section>
 
   <!-- MAIN CONTENT -->
-  <div class="container">
+  <section class="section-dark">
+  <div class="container reveal">
 
     <h2>About TechCraftMStudio</h2>
 
@@ -55,7 +56,11 @@
       to help creators and developers improve their skills.
     </p>
 
-    <hr style="margin:40px 0;">
+    </div>
+</section>
+
+<section class="section-light">
+  <div class="container">
 
     <h2>Subscribe on YouTube</h2>
 
@@ -63,7 +68,7 @@
       Watch tech contents, tools, and practical content on our channel.
     </p>
 
-    <div class="youtube-subscribe">
+    <div class="youtube-subscribe reveal">
       <iframe
         src="https://www.youtube.com/subscribe_embed?usegapi=1&channelid=UCwEmKbFnxtQiezL73tSmLnw"
         frameborder="0"
@@ -79,11 +84,32 @@
     </div>
 
   </div>
+    </div>
+</section>
 
   <!-- FOOTER -->
   <footer>
     <p>© 2026 TechCraftMStudio. All rights reserved.</p>
   </footer>
+
+  <script>
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+
+    for (let i = 0; i < reveals.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveals[i].getBoundingClientRect().top;
+      const elementVisible = 100;
+
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  window.addEventListener("load", revealOnScroll);
+</script>
 
 </body>
 </html>
