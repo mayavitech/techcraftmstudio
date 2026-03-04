@@ -72,86 +72,70 @@
   </section>
 
   <!-- JAVASCRIPT -->
-  <script>
+    <!-- ALL PAGE LOGIC -->
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-    /* ===============================
-       PAGE FADE TRANSITION
-    =============================== */
+  const navbar = document.getElementById("navbar");
+  const progressBar = document.getElementById("scroll-progress");
 
-    window.addEventListener("DOMContentLoaded", function () {
+  /* PAGE FADE IN */
+  document.body.classList.add("page-loaded");
 
-      // Fade in
-      document.body.classList.add("page-loaded");
+  /* SCROLL REVEAL */
+  function revealElements() {
+    const reveals = document.querySelectorAll(".reveal");
 
-      // Fade out on nav click
-      document.querySelectorAll(".nav-links a").forEach(link => {
-        link.addEventListener("click", function (e) {
-          const target = this.getAttribute("href");
+    reveals.forEach((element) => {
+      const windowHeight = window.innerHeight;
+      const elementTop = element.getBoundingClientRect().top;
+      const revealPoint = 100;
 
-          if (target && target.includes(".html")) {
-            e.preventDefault();
-            document.body.classList.remove("page-loaded");
-
-            setTimeout(() => {
-              window.location.href = target;
-            }, 250);
-          }
-        });
-      });
-
+      if (elementTop < windowHeight - revealPoint) {
+        element.classList.add("active");
+      }
     });
+  }
 
+  window.addEventListener("scroll", revealElements);
+  setTimeout(revealElements, 400);
 
-    /* ===============================
-       SCROLL PROGRESS + NAV SHADOW
-    =============================== */
+  /* NAVIGATION TRANSITION */
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", function (e) {
+      const target = this.getAttribute("href");
 
-    const navbar = document.getElementById("navbar");
-    const progressBar = document.getElementById("scroll-progress");
+      if (target && target.includes(".html")) {
+        e.preventDefault();
+        document.body.classList.remove("page-loaded");
 
-    window.addEventListener("scroll", function () {
+        setTimeout(() => {
+          window.location.href = target;
+        }, 250);
+      }
+    });
+  });
 
-      // Nav shadow on scroll
+  /* NAV SCROLL EFFECT + PROGRESS BAR */
+  window.addEventListener("scroll", function () {
+
+    if (navbar) {
       if (window.scrollY > 50) {
         navbar.classList.add("nav-scrolled");
       } else {
         navbar.classList.remove("nav-scrolled");
       }
+    }
 
-      // Scroll progress bar
+    if (progressBar) {
       let scrollTop = document.documentElement.scrollTop;
       let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       let progress = (scrollTop / scrollHeight) * 100;
       progressBar.style.width = progress + "%";
-
-    });
-
-
-    /* ===============================
-       REVEAL ANIMATION
-    =============================== */
-
-    function revealElements() {
-      const reveals = document.querySelectorAll('.reveal');
-
-      reveals.forEach((element) => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const revealPoint = 100;
-
-        if (elementTop < windowHeight - revealPoint) {
-          element.classList.add("active");
-        }
-      });
     }
+  });
 
-    window.addEventListener("load", function () {
-      setTimeout(revealElements, 300);
-    });
-
-    window.addEventListener("scroll", revealElements);
-
-  </script>
-
+});
+</script>
 </body>
 </html>
