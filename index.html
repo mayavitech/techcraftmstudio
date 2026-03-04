@@ -106,25 +106,29 @@
   </footer>
 
   <!-- SCROLL REVEAL SCRIPT -->
-  <script>
-  function revealOnScroll() {
+ <script>
+  function revealElements() {
     const reveals = document.querySelectorAll('.reveal');
 
     reveals.forEach((element) => {
       const windowHeight = window.innerHeight;
       const elementTop = element.getBoundingClientRect().top;
-      const elementVisible = 50;
+      const revealPoint = 100;
 
-      if (elementTop < windowHeight - elementVisible) {
+      if (elementTop < windowHeight - revealPoint) {
         element.classList.add("active");
       }
     });
   }
 
-  window.addEventListener("scroll", revealOnScroll);
+  // Run AFTER everything including preloader
+  window.addEventListener("load", function () {
+    setTimeout(() => {
+      revealElements();
+    }, 400);
+  });
 
-  // Run immediately after page loads
-  window.addEventListener("DOMContentLoaded", revealOnScroll);
+  window.addEventListener("scroll", revealElements);
 </script>
   <!-- PRELOADER HIDE SCRIPT -->
   <script>
