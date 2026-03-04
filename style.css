@@ -352,3 +352,83 @@ body.page-loaded {
 .fade-out {
   opacity: 0 !important;
 }
+/* ===============================
+   GLASS NAVIGATION
+================================ */
+
+#navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 15px 0;
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.nav-inner {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  color: #00bcd4;
+}
+
+.nav-links a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #ffffff;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #00bcd4;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #00bcd4;
+}
+
+/* Nav shadow when scrolling */
+.nav-scrolled {
+  background: rgba(15, 15, 15, 0.9);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+/* ===============================
+   SCROLL PROGRESS BAR
+================================ */
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #00bcd4;
+  z-index: 2000;
+}
+body {
+  padding-top: 80px;
+}
