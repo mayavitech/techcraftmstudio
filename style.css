@@ -335,3 +335,19 @@ button:hover,
   transform: translateY(-100%);
   opacity: 0;
 }
+/* ===============================
+   PAGE TRANSITION
+================================ */
+
+body {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.page-loaded {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0 !important;
+}

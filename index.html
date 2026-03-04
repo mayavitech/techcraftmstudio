@@ -107,24 +107,25 @@
 
   <!-- SCROLL REVEAL SCRIPT -->
   <script>
-    function revealOnScroll() {
-      const reveals = document.querySelectorAll('.reveal');
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
 
-      for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = 100;
+    reveals.forEach((element) => {
+      const windowHeight = window.innerHeight;
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 50;
 
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
-        }
+      if (elementTop < windowHeight - elementVisible) {
+        element.classList.add("active");
       }
-    }
+    });
+  }
 
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
-  </script>
+  window.addEventListener("scroll", revealOnScroll);
 
+  // Run immediately after page loads
+  window.addEventListener("DOMContentLoaded", revealOnScroll);
+</script>
   <!-- PRELOADER HIDE SCRIPT -->
   <script>
     window.addEventListener("load", function () {
@@ -135,6 +136,30 @@
       }, 1800);
     });
   </script>
+  <script>
+  // Fade in when page loads
+  window.addEventListener("load", function () {
+    document.body.classList.add("page-loaded");
+  });
+
+  // Fade out when clicking navigation links
+  document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", function (e) {
+      const target = this.getAttribute("href");
+
+      // Only animate internal pages
+      if (target.includes(".html")) {
+        e.preventDefault();
+        document.body.classList.remove("page-loaded");
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location.href = target;
+        }, 300);
+      }
+    });
+  });
+</script>
 
 </body>
 </html>

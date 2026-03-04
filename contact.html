@@ -54,6 +54,28 @@
       <button type="submit">Send Message</button>
     </form>
   </div>
+<script>
+  // Fade in when page loads
+  window.addEventListener("load", function () {
+    document.body.classList.add("page-loaded");
+  });
 
+  // Fade out when clicking navigation links
+  document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", function (e) {
+      const target = this.getAttribute("href");
+
+      if (target.includes(".html")) {
+        e.preventDefault();
+        document.body.classList.remove("page-loaded");
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location.href = target;
+        }, 300);
+      }
+    });
+  });
+</script>
 </body>
 </html>
