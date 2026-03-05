@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Creator Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+background:#0f0f0f;
+color:white;
+font-family:Arial;
+margin:0;
+}
+
+.dashboard{
+display:flex;
+height:100vh;
+}
+
+.sidebar{
+width:220px;
+background:#111;
+padding:30px 20px;
+border-right:1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar h2{
+color:#00bcd4;
+margin-bottom:30px;
+}
+
+.sidebar a{
+display:block;
+color:#aaa;
+text-decoration:none;
+margin:15px 0;
+transition:0.3s;
+}
+
+.sidebar a:hover{
+color:#00bcd4;
+}
+
+.main{
+flex:1;
+padding:40px;
+}
+
+.card{
+background:#141414;
+padding:25px;
+border-radius:12px;
+margin-bottom:20px;
+border:1px solid rgba(255,255,255,0.05);
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#1e1e1e;
+border:none;
+color:white;
+border-radius:6px;
+}
+
+button{
+margin-top:15px;
+padding:10px 20px;
+background:#00bcd4;
+border:none;
+border-radius:6px;
+color:black;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<div class="sidebar">
+
+<h2>Creator</h2>
+
+<a href="#">Dashboard</a>
+<a href="#">Add Video</a>
+<a href="#">Add Download</a>
+<a href="#">Site Settings</a>
+
+</div>
+
+
+<div class="main">
+
+<h1>Creator Control Panel</h1>
+
+
+<div class="card">
+
+<h3>Add New Video</h3>
+
+<input placeholder="Video Title">
+
+<input placeholder="YouTube Link">
+
+<button>Add Video</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>Add New Download</h3>
+
+<input placeholder="Tool Name">
+
+<input placeholder="Download Link">
+
+<button>Add Download</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>Site Info</h3>
+
+<p>Welcome Mayu 👑</p>
+<p>This is your private dashboard.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
