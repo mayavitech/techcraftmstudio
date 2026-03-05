@@ -576,3 +576,75 @@ button:hover::before,
 .feature-card p{
   color:#cfd8dc;
 }
+/* ===============================
+CREATOR LOGIN
+================================ */
+
+#creator-login{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.creator-box{
+  background:#1a1a1a;
+  padding:40px;
+  border-radius:12px;
+  width:320px;
+  text-align:center;
+  border:1px solid #333;
+}
+
+.creator-box input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  background:#111;
+  border:1px solid #333;
+  color:white;
+  border-radius:6px;
+}
+
+#login-error{
+  color:red;
+  margin-top:10px;
+}
+
+
+/* ===============================
+CREATOR DASHBOARD
+================================ */
+
+#creator-dashboard{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#0f0f0f;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.dashboard-box{
+  background:#1a1a1a;
+  padding:40px;
+  width:400px;
+  border-radius:12px;
+  border:1px solid #333;
+}
+
+.dashboard-box input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  background:#111;
+  border:1px solid #333;
+  color:white;
+  border-radius:6px;
+}

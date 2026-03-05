@@ -102,6 +102,7 @@
       </p>
     </div>
   </section>
+ 
 
   <!-- YOUTUBE -->
   <section class="section-light">
@@ -125,7 +126,6 @@
       </div>
     </div>
   </section>
-
   <footer>
     <p>© 2026 TechCraftMStudio. All rights reserved.</p>
   </footer>
@@ -218,8 +218,76 @@ document.addEventListener("DOMContentLoaded", function () {
       progressBar.style.width = progress + "%";
     }
   });
+  /* ========================
+     SECRET CREATOR LOGIN
+  ======================== */
 
+  document.addEventListener("keydown", function(e) {
+
+    if (e.ctrlKey && e.key === "k") {
+
+      let email = prompt("Creator Email:");
+
+      if(email === "mayavi@admin.com"){
+
+        let password = prompt("Password:");
+
+        if(password === "12345"){
+          window.location.href = "creator.html";
+        }
+        else{
+          alert("Wrong Password");
+        }
+
+      }
+
+    }
+
+  });
 });
 </script>
+<!-- ===============================
+CREATOR LOGIN PANEL
+================================ -->
+<div id="creator-login">
+  <div class="creator-box">
+
+    <h2>Creator Login</h2>
+
+    <input type="email" id="creator-email" placeholder="Email">
+    <input type="password" id="creator-password" placeholder="Password">
+
+    <button onclick="creatorLogin()">Login</button>
+
+    <p id="login-error"></p>
+
+  </div>
+</div>
+
+
+<!-- ===============================
+CREATOR DASHBOARD
+================================ -->
+<div id="creator-dashboard">
+
+  <div class="dashboard-box">
+
+    <h2>Creator Dashboard</h2>
+
+    <button onclick="closeDashboard()">Close</button>
+
+    <hr>
+
+    <h3>Add Download</h3>
+
+    <input type="text" id="download-title" placeholder="Title">
+    <input type="text" id="download-desc" placeholder="Description">
+    <input type="text" id="download-link" placeholder="File Link">
+
+    <button onclick="addDownload()">Add Download</button>
+
+  </div>
+
+</div>
 </body>
 </html>
