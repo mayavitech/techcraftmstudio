@@ -35,7 +35,7 @@ body.page-loaded {
 }
 
 /* ===============================
-   GLASS NAVIGATION
+   GLASS NAVIGATION (PERMANENT)
 ================================ */
 
 #navbar {
@@ -43,24 +43,23 @@ body.page-loaded {
   width: 100%;
   top: 0;
   left: 0;
-
   padding: 18px 0;
 
-  background: transparent;
+  /* glass effect */
+  background: rgba(15, 15, 15, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 
   z-index: 1000;
-
-  transition: all 0.35s ease;
-
+  transition: all 0.3s ease;
 }
-
-/* NAV INNER */
 
 .nav-inner {
   width: 90%;
   max-width: 1200px;
   margin: auto;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,62 +71,46 @@ body.page-loaded {
   font-weight: bold;
   font-size: 18px;
   color: #00bcd4;
-
-  letter-spacing: 0.5px;
 }
 
 /* NAV LINKS */
 
 .nav-links a {
-
   margin-left: 25px;
-
   text-decoration: none;
-
   color: #ffffff;
-
   font-weight: 500;
-
   position: relative;
-
   transition: 0.3s;
-
 }
 
-/* LINK HOVER UNDERLINE */
+/* underline animation */
 
 .nav-links a::after {
-
   content: "";
-
   position: absolute;
-
   width: 0%;
-
   height: 2px;
-
-  bottom: -5px;
-
+  bottom: -6px;
   left: 0;
-
   background: #00bcd4;
-
-  transition: width 0.3s ease;
-
+  transition: 0.3s ease;
 }
 
-/* HOVER EFFECT */
+/* hover glow */
 
 .nav-links a:hover {
-
   color: #00bcd4;
-
 }
 
 .nav-links a:hover::after {
-
   width: 100%;
+}
 
+/* scroll state (optional shadow only) */
+
+.nav-scrolled {
+  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
 }
 
 /* ===============================
