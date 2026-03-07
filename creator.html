@@ -78,8 +78,11 @@ font-weight:bold;
 cursor:pointer;
 }
 
-</style>
+button:hover{
+opacity:0.9;
+}
 
+</style>
 </head>
 
 <body>
@@ -102,39 +105,139 @@ cursor:pointer;
 
 <h1>Creator Control Panel</h1>
 
+<!-- ADD VIDEO -->
+
 <div class="card">
+
 <h3>Add New Video</h3>
 
-<input placeholder="Video Title">
-<input placeholder="YouTube Link">
+<input id="videoTitle" placeholder="Video Title">
 
-<button>Add Video</button>
+<input id="videoLink" placeholder="YouTube Link">
+
+<button id="addVideoBtn">Add Video</button>
 
 </div>
 
 
+<!-- ADD DOWNLOAD TOOL -->
+
 <div class="card">
+
 <h3>Add Download Tool</h3>
 
-<input placeholder="Tool Name">
-<input placeholder="Download Link">
+<input id="toolName" placeholder="Tool Name">
 
-<button>Add Tool</button>
+<input id="toolLink" placeholder="Download Link">
+
+<button id="addToolBtn">Add Tool</button>
 
 </div>
 
 
 <div class="card">
+
 <h3>Admin Info</h3>
 
 <p>Welcome Mayu 👑</p>
 <p>This is your private dashboard.</p>
-</div>
 
 </div>
 
 </div>
+
+</div>
+
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyDqeEKB3D-S2fN4JQ6UHZsm-JyRxjmKPtE",
+authDomain: "mayavi-tech.firebaseapp.com",
+projectId: "mayavi-tech",
+storageBucket: "mayavi-tech.firebasestorage.app",
+messagingSenderId: "677031551477",
+appId: "1:677031551477:web:d67356a31cb253146a40bc",
+measurementId: "G-CWC3FX657Q"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+/* ADD VIDEO */
+
+document.getElementById("addVideoBtn").addEventListener("click", async () => {
+
+const title = document.getElementById("videoTitle").value;
+const link = document.getElementById("videoLink").value;
+
+if(title === "" || link === ""){
+alert("Fill all fields");
+return;
+}
+
+try{
+
+await addDoc(collection(db,"videos"),{
+title:title,
+link:link,
+created:serverTimestamp()
+});
+
+alert("Video Added Successfully");
+
+document.getElementById("videoTitle").value="";
+document.getElementById("videoLink").value="";
+
+}catch(error){
+
+console.error(error);
+alert("Error adding video");
+
+}
+
+});
+
+
+/* ADD TOOL */
+
+document.getElementById("addToolBtn").addEventListener("click", async () => {
+
+const name = document.getElementById("toolName").value;
+const link = document.getElementById("toolLink").value;
+
+if(name === "" || link === ""){
+alert("Fill all fields");
+return;
+}
+
+try{
+
+await addDoc(collection(db,"tools"),{
+name:name,
+link:link,
+created:serverTimestamp()
+});
+
+alert("Tool Added Successfully");
+
+document.getElementById("toolName").value="";
+document.getElementById("toolLink").value="";
+
+}catch(error){
+
+console.error(error);
+alert("Error adding tool");
+
+}
+
+});
+
+</script>
 
 </body>
-
 </html>
