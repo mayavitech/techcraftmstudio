@@ -1,243 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creator Dashboard</title>
-
-<style>
-
-body{
-background:#0f0f0f;
-color:white;
-font-family:Arial, sans-serif;
-margin:0;
-}
-
-.dashboard{
-display:flex;
-min-height:100vh;
-}
-
-.sidebar{
-width:230px;
-background:#111;
-padding:30px 20px;
-border-right:1px solid rgba(255,255,255,0.05);
-}
-
-.sidebar h2{
-color:#00bcd4;
-margin-bottom:30px;
-}
-
-.sidebar a{
-display:block;
-color:#aaa;
-text-decoration:none;
-margin:15px 0;
-transition:0.3s;
-}
-
-.sidebar a:hover{
-color:#00bcd4;
-}
-
-.main{
-flex:1;
-padding:40px;
-}
-
-.card{
-background:#161616;
-padding:25px;
-border-radius:12px;
-margin-bottom:20px;
-border:1px solid rgba(255,255,255,0.05);
-}
-
-input{
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#1e1e1e;
-border:none;
-color:white;
-border-radius:6px;
-}
-
-button{
-margin-top:15px;
-padding:12px 20px;
-background:#00bcd4;
-border:none;
-border-radius:6px;
-color:black;
-font-weight:bold;
-cursor:pointer;
-}
-
-button:hover{
-opacity:0.9;
-}
-
-</style>
+<title>Creator Login</title>
 </head>
 
 <body>
 
-<div class="dashboard">
+<script>
 
-<div class="sidebar">
+document.addEventListener("keydown", function(e){
 
-<h2>Creator</h2>
+if(e.ctrlKey && e.key.toLowerCase() === "k"){
 
-<a href="#">Dashboard</a>
-<a href="#">Add Video</a>
-<a href="#">Add Download</a>
-<a href="#">Site Settings</a>
+e.preventDefault();
 
-</div>
+const email = prompt("Creator Email");
+const pass = prompt("Password");
 
+if(email === "mayu" && pass === "1234"){
 
-<div class="main">
+window.location.href = "creator/dashboard.html";
 
-<h1>Creator Control Panel</h1>
+}else{
 
-<!-- ADD VIDEO -->
-
-<div class="card">
-
-<h3>Add New Video</h3>
-
-<input id="videoTitle" placeholder="Video Title">
-
-<input id="videoLink" placeholder="YouTube Link">
-
-<button id="addVideoBtn">Add Video</button>
-
-</div>
-
-
-<!-- ADD DOWNLOAD TOOL -->
-
-<div class="card">
-
-<h3>Add Download Tool</h3>
-
-<input id="toolName" placeholder="Tool Name">
-
-<input id="toolLink" placeholder="Download Link">
-
-<button id="addToolBtn">Add Tool</button>
-
-</div>
-
-
-<div class="card">
-
-<h3>Admin Info</h3>
-
-<p>Welcome Mayu 👑</p>
-<p>This is your private dashboard.</p>
-
-</div>
-
-</div>
-
-</div>
-
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
-
-const firebaseConfig = {
-apiKey: "AIzaSyDqeEKB3D-S2fN4JQ6UHZsm-JyRxjmKPtE",
-authDomain: "mayavi-tech.firebaseapp.com",
-projectId: "mayavi-tech",
-storageBucket: "mayavi-tech.firebasestorage.app",
-messagingSenderId: "677031551477",
-appId: "1:677031551477:web:d67356a31cb253146a40bc",
-measurementId: "G-CWC3FX657Q"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-
-/* ADD VIDEO */
-
-document.getElementById("addVideoBtn").addEventListener("click", async () => {
-
-const title = document.getElementById("videoTitle").value;
-const link = document.getElementById("videoLink").value;
-
-if(title === "" || link === ""){
-alert("Fill all fields");
-return;
-}
-
-try{
-
-await addDoc(collection(db,"videos"),{
-title:title,
-link:link,
-created:serverTimestamp()
-});
-
-alert("Video Added Successfully");
-
-document.getElementById("videoTitle").value="";
-document.getElementById("videoLink").value="";
-
-}catch(error){
-
-console.error(error);
-alert("Error adding video");
+alert("Wrong login");
 
 }
-
-});
-
-
-/* ADD TOOL */
-
-document.getElementById("addToolBtn").addEventListener("click", async () => {
-
-const name = document.getElementById("toolName").value;
-const link = document.getElementById("toolLink").value;
-
-if(name === "" || link === ""){
-alert("Fill all fields");
-return;
-}
-
-try{
-
-await addDoc(collection(db,"tools"),{
-name:name,
-link:link,
-created:serverTimestamp()
-});
-
-alert("Tool Added Successfully");
-
-document.getElementById("toolName").value="";
-document.getElementById("toolLink").value="";
-
-}catch(error){
-
-console.error(error);
-alert("Error adding tool");
 
 }
 
 });
 
 </script>
+
+<p>Press CTRL + K to login</p>
 
 </body>
 </html>
