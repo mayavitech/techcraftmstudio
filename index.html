@@ -315,5 +315,31 @@ alert("Access Denied");
 });
 
 </script>
+<script>
+
+document.addEventListener("keydown", function(e){
+
+if(e.ctrlKey && e.key.toLowerCase() === "k"){
+
+e.preventDefault();
+
+const email = prompt("Creator Email");
+const pass = prompt("Password");
+
+if(email === "adinadh9yt@gmail.com" && pass === "mayavi@admin"){
+
+window.location.href = "creator/dashboard.html";
+
+}else{
+
+alert("Wrong login");
+
+}
+
+}
+
+});
+
+</script>
 </body>
 </html>
