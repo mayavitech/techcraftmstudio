@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Creator</title>
+<title>Creator Login</title>
 </head>
 
-<body>
+<body style="background:black;color:white;font-family:Arial;">
 
-<h2>Creator page</h2>
+<h2>Press CTRL + K to login</h2>
 
-<p>This page should not be used directly</p>
+<script>
+document.addEventListener("keydown", function(e){
+
+if(e.ctrlKey && e.key === "k"){
+
+e.preventDefault();
+
+let email = prompt("Enter Creator Email:");
+let pass = prompt("Enter Password:");
+
+if(email === "adinadh9yt@gmail.com" && pass === "mayavi@admin"){
+    
+    localStorage.setItem("admin","true");
+    window.location.href = "creator/dashboard.html";
+
+}else{
+    alert("Wrong login");
+}
+
+}
+
+});
+</script>
 
 </body>
 </html>

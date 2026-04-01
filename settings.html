@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Settings</title>
+</head>
+
+<body style="background:black;color:white;">
+
+<script>
+if(localStorage.getItem("admin") !== "true"){
+    window.location.href = "../creator.html";
+}
+</script>
+
+<h1>Settings</h1>
+
+<button onclick="logout()">Logout</button>
+
+<script>
+function logout(){
+localStorage.removeItem("admin");
+window.location.href = "../creator.html";
+}
+</script>
+
+</body>
+</html>

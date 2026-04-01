@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tools</title>
+
+<style>
+body{background:#0f0f0f;color:white;font-family:Arial;margin:0;}
+.sidebar{width:220px;height:100vh;background:#111;position:fixed;padding:20px;}
+.sidebar a{display:block;color:#aaa;margin:15px 0;text-decoration:none;}
+.main{margin-left:240px;padding:40px;}
+input{display:block;width:300px;padding:10px;margin:10px 0;background:#1e1e1e;border:none;color:white;}
+button{padding:10px 20px;background:#00bcd4;border:none;}
+</style>
+
+</head>
+
+<body>
+
+<script>
+if(localStorage.getItem("admin") !== "true"){
+    window.location.href = "../creator.html";
+}
+</script>
+
+<div class="sidebar">
+<h2>Creator</h2>
+<a href="dashboard.html">Dashboard</a>
+<a href="videos.html">Videos</a>
+<a href="tools.html">Tools</a>
+<a href="analytics.html">Analytics</a>
+<a href="settings.html">Settings</a>
+</div>
+
+<div class="main">
+
+<h1>Add Tool</h1>
+
+<input id="name" placeholder="Tool Name">
+<input id="link" placeholder="Download Link">
+
+<button onclick="addTool()">Add Tool</button>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDqeEKB3D-S2fN4JQ6UHZsm-JyRxjmKPtE",
+  authDomain: "mayavi-tech.firebaseapp.com",
+  projectId: "mayavi-tech",
+  storageBucket: "mayavi-tech.firebasestorage.app",
+  messagingSenderId: "677031551477",
+  appId: "1:677031551477:web:d67356a31cb253146a40bc"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.addTool = async function(){
+
+const name = document.getElementById("name").value;
+const link = document.getElementById("link").value;
+
+await addDoc(collection(db,"tools"),{
+name:name,
+link:link,
+date:Date.now()
+});
+
+alert("Tool Added");
+
+}
+
+</script>
+
+</body>
+</html>
