@@ -2,34 +2,51 @@
 <html>
 <head>
 <title>Creator Login</title>
+
+<style>
+body{
+background:black;
+color:white;
+font-family:Arial;
+padding:40px;
+}
+</style>
+
 </head>
 
-<body style="background:black;color:white;font-family:Arial;">
+<body>
 
-<h2>Press CTRL + K to login</h2>
+<h1>Press CTRL + K to login</h1>
 
 <script>
+
+// 🔑 LOGIN SYSTEM
 document.addEventListener("keydown", function(e){
 
 if(e.ctrlKey && e.key === "k"){
 
 e.preventDefault();
 
-let email = prompt("Enter Creator Email:");
+let email = prompt("Enter Email:");
 let pass = prompt("Enter Password:");
 
+// ✅ YOUR LOGIN
 if(email === "adinadh9yt@gmail.com" && pass === "mayavi@admin"){
-    
-    localStorage.setItem("admin","true");
-    window.location.href = "creator/dashboard.html";
+
+// save login
+localStorage.setItem("admin","true");
+
+// 🔥 REDIRECT TO DASHBOARD
+window.location.href = "creator/dashboard.html";
 
 }else{
-    alert("Wrong login");
+alert("Wrong login");
 }
 
 }
 
 });
+
 </script>
 
 </body>
